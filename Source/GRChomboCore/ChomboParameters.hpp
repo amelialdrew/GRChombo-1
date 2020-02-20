@@ -77,6 +77,10 @@ class ChomboParameters
         // Misc
         pp.load("ignore_checkpoint_name_mismatch",
                 ignore_checkpoint_name_mismatch, false);
+        pp.load("allow_user_restart", allow_user_restart, false);
+        std::string default_restart_trigger_file = "GRCHOMBO_RESTART";
+        pp.load("restart_trigger_file", restart_trigger_file,
+                default_restart_trigger_file);
 
         // Setup the grid size
         ivN = IntVect::Unit;
@@ -152,6 +156,8 @@ class ChomboParameters
     double fill_ratio; // determines how fussy the regridding is about tags
     std::string checkpoint_prefix, plot_prefix; // naming of files
     bool write_plot_ghosts;
+    bool allow_user_restart;    // allows the user to restart the simulation.
+    std::string restart_trigger_file; // name of file to trigger user restart
 
     // Boundary conditions
     std::array<bool, CH_SPACEDIM> isPeriodic;     // periodicity
