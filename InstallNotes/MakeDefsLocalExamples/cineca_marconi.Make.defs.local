@@ -1,11 +1,11 @@
 DIM             = 3
 DEBUG           = FALSE
 OPT             = HIGH
-CXX             = icpc -std=c++14 -qopenmp -mkl=sequential -traditional -xCORE-AVX512
+CXX             = icpc -std=c++14 -qopenmp -mkl=sequential -xCORE-AVX2 -axCORE-AVX512
 FC              = ifort -qopenmp -mkl=sequential
 MPI             = TRUE
-OMP             = TRUE
-MPICXX          = mpiicpc -std=c++14 -qopenmp -mkl=sequential -xCORE-AVX512
+OPENMPCC        = TRUE
+MPICXX          = mpiicpc -std=c++14 -qopenmp -mkl=sequential -xCORE-AVX2 -axCORE-AVX512
 USE_64          = TRUE
 USE_HDF         = TRUE
 HDFINCFLAGS     = -I${HDF5_HOME}/include
@@ -13,6 +13,6 @@ HDFLIBFLAGS     = -L${HDF5_HOME}/lib -lhdf5 -lz
 HDFMPIINCFLAGS  = -I${HDF5_HOME}/include
 HDFMPILIBFLAGS  = -L${HDF5_HOME}/lib -lhdf5 -lz
 cxxdbgflags     = -g -Wl,--eh-frame-hdr
-cxxoptflags     = -O3 -qoverride -limits
+cxxoptflags     = -O3 
 fdbgflags       = -g -Wl,--eh-frame-hdr
-foptflags       = -O3 -qoverride -limits
+foptflags       = -O3
